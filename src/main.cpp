@@ -23,6 +23,7 @@ int main()
     SOE,
     DIOPHANTINE,
     PARTITIONS,
+    PARTITIONS_BELL,
     GCD,
     DIVISORS,
     PRIME_FACTORS,
@@ -33,7 +34,8 @@ int main()
 
   opsName[Operations::SOE] = "Sieve of Eratosthenes";
   opsName[Operations::DIOPHANTINE] = "Linear Diophantine Equation ax + by = g";
-  opsName[Operations::PARTITIONS] = "Partitions p(n)";
+  opsName[Operations::PARTITIONS] = "Partitions";
+  opsName[Operations::PARTITIONS_BELL] = "Partitions (Bell Numbers)";
   opsName[Operations::GCD] = "GCD/GCF (Euclidian)";
   opsName[Operations::DIVISORS] = "Divisors";
   opsName[Operations::PRIME_FACTORS] = "Prime Factors";
@@ -94,7 +96,8 @@ int main()
       std::set<int> primes;
       std::vector<int> integers;
       int first, second, third;
-      int gcd, parts;
+      int gcd;
+      long long int parts;
 
       std::printf("\n[%2d] %s\n\n", pair.first, opsName[pair.first].c_str());
 
@@ -124,7 +127,15 @@ int main()
           first = mutils::prompt_int_input("Enter integer value of n: ");
           std::cout << std::endl;
           parts = mutils::partitions(first);
-          std::printf("\np(%d) = %d\n", first, parts);
+          std::printf("\np(%d) = %lld\n", first, parts);
+          break;
+
+        case Operations::PARTITIONS_BELL:
+
+          first = mutils::prompt_int_input("Enter integer value of n: ");
+          std::cout << std::endl;
+          parts = mutils::partitions_bell(first);
+          std::printf("\np(%d) = %lld\n", first, parts);
           break;
 
         case Operations::GCD:

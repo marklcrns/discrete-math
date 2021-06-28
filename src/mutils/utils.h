@@ -14,6 +14,7 @@ namespace mutils {
   void sieve_of_eratosthenes(int n, std::set<int>& primes, bool verbose);
   void linear_diophantine(int a, int b, int c);
   auto partitions(int n) -> int;
+  auto partitions_bell(int n) -> long long int;
   void divisors(int n, std::vector<int>& divisors);
   auto gcd(int m, int n, bool verbose) -> int;
   void prime_factors(int n, std::vector<int>& primeFactors);
