@@ -94,7 +94,7 @@ int main()
       std::set<int> primes;
       std::vector<int> integers;
       int first, second, third;
-      int gcd;
+      int gcd, parts;
 
       std::printf("\n[%2d] %s\n\n", pair.first, opsName[pair.first].c_str());
 
@@ -102,7 +102,7 @@ int main()
 
         case Operations::SOE:
 
-          first = mutils::prompt_int_input("Enter an integer: ");
+          first = mutils::prompt_int_input("Enter integer value of n: ");
           std::cout << std::endl;
           mutils::sieve_of_eratosthenes(first, primes, true);
           std::cout << "\n\nAll primes:" << std::endl;
@@ -119,6 +119,14 @@ int main()
           mutils::linear_diophantine(first, second, third);
           break;
 
+        case Operations::PARTITIONS:
+
+          first = mutils::prompt_int_input("Enter integer value of n: ");
+          std::cout << std::endl;
+          parts = mutils::partitions(first);
+          std::printf("\np(%d) = %d\n", first, parts);
+          break;
+
         case Operations::GCD:
 
           first = mutils::prompt_int_input("Enter first integer: ");
@@ -130,7 +138,7 @@ int main()
 
         case Operations::DIVISORS:
 
-          first = mutils::prompt_int_input("Enter first integer: ");
+          first = mutils::prompt_int_input("Enter integer value of n: ");
           std::cout << std::endl;
           mutils::divisors(first, integers);
           mutils::print_vector_by_column(integers, 9);
@@ -139,7 +147,7 @@ int main()
 
         case Operations::PRIME_FACTORS:
 
-          first = mutils::prompt_int_input("Enter an integer: ");
+          first = mutils::prompt_int_input("Enter integer value of n: ");
           mutils::prime_factors(first, integers);
           mutils::print_vector_by_column(integers, 9);
           std::cout << std::endl;

@@ -49,53 +49,6 @@ void mutils::sieve_of_eratosthenes(int n, std::set<int>& primes, bool verbose)
 }
 
 
-void mutils::prime_factors(int n, std::vector<int>& primeFactors)
-{
-  std::set<int> primes;
-
-  sieve_of_eratosthenes(n, primes, false);
-
-  int temp = n;
-  for (const auto& prime : primes) {
-    if (temp % prime == 0) {
-      while (temp % prime == 0) {
-        temp /= prime;
-        primeFactors.push_back(prime);
-      }
-    }
-  }
-}
-
-
-void mutils::divisors(int n, std::vector<int>& divisors)
-{
-  for (int i = 1; i <= n; ++i) {
-    if (n % i == 0) { divisors.push_back(i); }
-  }
-}
-
-
-// GCD or GCF using Euclidian Algorithm
-auto mutils::gcd(int a, int b, bool verbose) -> int
-{
-  int big;
-  int small;
-  if (a > b) {
-    big = a; small = b;
-  } else {
-    small = a; big = b;
-  }
-
-  int remainder = big % small;
-  if (verbose) {
-    std::printf("%10d = %d(%d) + %d\n", big, small, big / small, remainder);
-  }
-
-  if (remainder == 0) { return small; }
-  return gcd(small, remainder, verbose);
-}
-
-
 // Extended Euclidean algorithm
 auto mutils::extended_gcd(int a, int b) -> std::tuple<int, int>
 {
@@ -112,6 +65,7 @@ auto mutils::extended_gcd(int a, int b) -> std::tuple<int, int>
 }
 
 
+// https://www.techiedelight.com/find-general-solution-linear-diophantine-equation/
 void mutils::linear_diophantine(int a, int b, int g)
 {
   int a1, b1, g1;
@@ -142,6 +96,100 @@ void mutils::linear_diophantine(int a, int b, int g)
   std::cout << "General solution:" << std::endl;
   std::printf("\tx = %d + %dk\n", x, b / d);
   std::printf("\ty = %d - %dk   for any integer k\n\n", y, a / d);
+}
+
+
+// https://www.geeksforgeeks.org/generate-unique-partitions-of-an-integer/
+auto mutils::partitions(int n) -> int
+{
+  int p[(size_t)n];
+  int k = 0;
+  p[k] = n;
+
+  int parts = 0;
+  // This loop first prints current partition then generates next
+  // partition. The loop stops when the current partition has all 1s
+  while (true)
+  {
+    print_array(p, k+1);
+    ++parts;
+
+    // Find the rightmost non-one value in p[]. Also, update the
+    // rem_val to know how much value can be accommodated
+    int rem_val = 0;
+    while (k >= 0 && p[k] == 1) {
+        rem_val += p[k];
+        k--;
+    }
+
+    if (k < 0) break;
+
+    // Decrease the p[k] found above and adjust the rem_val
+    p[k]--;
+    rem_val++;
+
+    // If rem_val is more, then the sorted order is violated. Divide
+    // rem_val in different values of size p[k] and copy these values at
+    // different positions after p[k]
+    while (rem_val > p[k]) {
+      p[k+1] = p[k];
+      rem_val = rem_val - p[k];
+      k++;
+    }
+
+    // Copy rem_val to next position and increment position
+    p[k+1] = rem_val;
+    k++;
+  }
+
+  return parts;
+}
+
+
+// GCD or GCF using Euclidian Algorithm
+auto mutils::gcd(int a, int b, bool verbose) -> int
+{
+  int big;
+  int small;
+  if (a > b) {
+    big = a; small = b;
+  } else {
+    small = a; big = b;
+  }
+
+  int remainder = big % small;
+  if (verbose) {
+    std::printf("%10d = %d(%d) + %d\n", big, small, big / small, remainder);
+  }
+
+  if (remainder == 0) { return small; }
+  return gcd(small, remainder, verbose);
+}
+
+
+void mutils::divisors(int n, std::vector<int>& divisors)
+{
+  for (int i = 1; i <= n; ++i) {
+    if (n % i == 0) { divisors.push_back(i); }
+  }
+}
+
+
+void mutils::prime_factors(int n, std::vector<int>& primeFactors)
+{
+  std::set<int> primes;
+
+  sieve_of_eratosthenes(n, primes, false);
+
+  int temp = n;
+  for (const auto& prime : primes) {
+    if (temp % prime == 0) {
+      while (temp % prime == 0) {
+        temp /= prime;
+        primeFactors.push_back(prime);
+      }
+    }
+  }
 }
 
 
@@ -231,5 +279,4 @@ auto mutils::prompt_restart() -> bool
   std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
   return res == 'Y' || res == 'y';
 }
-
 
