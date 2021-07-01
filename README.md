@@ -1,7 +1,6 @@
 # MATH-254
 
-Math 254 (Discrete Mathematics) compilation of algorithms for homeworks and
-projects
+Discrete Mathematics compilation of algorithms for homeworks and projects
 
 Compiled with [Mingw-w64](http://mingw-w64.org/doku.php) for
 Windows cross-compatibility.
