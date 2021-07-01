@@ -1,4 +1,4 @@
-# MATH-254
+# Discrete Mathematics Algorithms
 
 Discrete Mathematics compilation of algorithms for homeworks and projects
 
