@@ -1,9 +1,12 @@
-# Sieve of Eratosthenes
+# MATH-254
 
-C++ program compiled with [Mingw-w64](http://mingw-w64.org/doku.php) for
+Math 254 (Discrete Mathematics) compilation of algorithms for homeworks and
+projects
+
+Compiled with [Mingw-w64](http://mingw-w64.org/doku.php) for
 Windows cross-compatibility.
 
-![Demo](./demo/prime_2000.gif)
+![Demo](./demo/demo.gif)
 
 ## Usage
 
@@ -15,7 +18,13 @@ For Windows, just simply run the program.
 For Unix systems
 
 ```sh
-./bin/sieve_of_eratosthenes.exe [ -h ] [ -n <integer> ]
+./bin/pos_int_algo_sols.exe
+```
+
+or
+
+```
+make run
 ```
 
 ## Building from Source
