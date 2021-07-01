@@ -7,6 +7,7 @@
 #include <windows.h>
 
 #include "mutils/utils.h"
+#include "mutils/bigint.h"
 
 
 void print_intro();
@@ -97,7 +98,8 @@ int main()
       std::vector<int> integers;
       int first, second, third;
       int gcd;
-      long long int parts;
+      int parts;
+      BigInt partsBell;
 
       std::printf("\n[%2d] %s\n\n", pair.first, opsName[pair.first].c_str());
 
@@ -127,15 +129,17 @@ int main()
           first = mutils::prompt_int_input("Enter integer value of n: ");
           std::cout << std::endl;
           parts = mutils::partitions(first);
-          std::printf("\np(%d) = %lld\n", first, parts);
+          std::printf("\np(%d) = %d\n", first, parts);
           break;
 
         case Operations::PARTITIONS_BELL:
 
           first = mutils::prompt_int_input("Enter integer value of n: ");
           std::cout << std::endl;
-          parts = mutils::partitions_bell(first);
-          std::printf("\np(%d) = %lld\n", first, parts);
+          for (int i = 1; i <= first; ++i) {
+            partsBell = mutils::partitions_bell(i);
+            std::printf("p(%2d) = %s\n", i, partsBell.to_string().c_str());
+          }
           break;
 
         case Operations::GCD:
@@ -153,7 +157,8 @@ int main()
           std::cout << std::endl;
           mutils::divisors(first, integers);
           mutils::print_vector_by_column(integers, 9);
-          std::cout << "\nThe sum of all divisors is: " << mutils::add_vector_values(integers) << std::endl;
+          std::cout << "\nThe sum of all divisors is: "
+                    << mutils::add_vector_values(integers) << std::endl;
           break;
 
         case Operations::PRIME_FACTORS:

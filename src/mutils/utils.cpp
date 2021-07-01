@@ -1,4 +1,5 @@
 #include "utils.h"
+
 #include <windows.h>
 
 void mutils::sieve_of_eratosthenes(int n, std::set<int>& primes, bool verbose)
@@ -147,9 +148,9 @@ auto mutils::partitions(int n) -> int
 
 
 // https://www.geeksforgeeks.org/bell-numbers-number-of-ways-to-partition-a-set/
-auto mutils::partitions_bell(int n) -> long long int
+auto mutils::partitions_bell(int n) -> BigInt
 {
-  long long int bell[n + 1][n + 1];
+  BigInt bell[n + 1][n + 1];
   bell[0][0] = 1;
   for (int i = 1; i <= n; i++) {
     bell[i][0] = bell[i - 1][i-1];
