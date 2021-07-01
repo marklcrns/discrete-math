@@ -10,10 +10,11 @@ Windows cross-compatibility.
 
 ## Usage
 
-For Windows, just simply run the program `./bin/pos_int_algo_sols.exe`.
+For Windows, just simply run the program `bin/pos_int_algo_sols.exe`.
 
-> Note: Windows Defender might flag the executable as potential harmful program.
-> Ignore the warning and proceed. Its not a virus. I'm not about that life.
+> Note: Windows Defender might flag the executable as potentially harmful
+> program. Ignore the warning and proceed. Its not a virus. I'm not about that
+> life.
 
 For Unix systems
 
