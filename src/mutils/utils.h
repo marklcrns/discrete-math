@@ -20,6 +20,7 @@ namespace mutils {
   void divisors(int n, std::vector<int>& divisors);
   auto gcd(int m, int n, bool verbose) -> int;
   void prime_factors(int n, std::vector<int>& primeFactors);
+  auto factorial(BigInt n) -> BigInt;
 
   auto extended_gcd(int m, int n) -> std::tuple<int, int>;
   bool is_string_ints(const std::string& str);

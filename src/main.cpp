@@ -28,6 +28,7 @@ int main()
     GCD,
     DIVISORS,
     PRIME_FACTORS,
+    FACTORIAL,
   };
 
   std::map<int, std::string> opsName;
@@ -40,6 +41,7 @@ int main()
   opsName[Operations::GCD] = "GCD/GCF (Euclidian)";
   opsName[Operations::DIVISORS] = "Divisors";
   opsName[Operations::PRIME_FACTORS] = "Prime Factors";
+  opsName[Operations::FACTORIAL] = "Factorial n!";
 
   // Initialize all operations to false
   for (auto ops : opsName) { opsToggle[ops.first] = false; }
@@ -100,6 +102,7 @@ int main()
       int gcd;
       int parts;
       BigInt partsBell;
+      BigInt factorial;
 
       std::printf("\n[%2d] %s\n\n", pair.first, opsName[pair.first].c_str());
 
@@ -169,6 +172,12 @@ int main()
           std::cout << std::endl;
           break;
 
+        case Operations::FACTORIAL:
+
+          first = mutils::prompt_int_input("Enter integer value of n: ");
+          factorial = mutils::factorial(first);
+          std::cout << "Factorial of " << first << ": " << factorial << std::endl;
+          break;
       }
     }
 

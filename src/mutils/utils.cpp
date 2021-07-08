@@ -210,6 +210,16 @@ void mutils::prime_factors(int n, std::vector<int>& primeFactors)
 }
 
 
+auto mutils::factorial(BigInt n) -> BigInt
+{
+  if (n == 0) {
+    return BigInt(1);
+  }
+
+  return n * factorial(n - 1);
+}
+
+
 auto mutils::is_string_ints(const std::string& str) -> bool
 {
   return
