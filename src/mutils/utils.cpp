@@ -184,6 +184,18 @@ auto mutils::gcd(int a, int b, bool verbose) -> int
 }
 
 
+// LCM using GCD
+auto mutils::lcm(int a, int b, bool verbose) -> int
+{
+  int _gcd = gcd(a, b, false);
+  int lcm = (a * b) / _gcd;
+  if (verbose) {
+    std::printf("(%d * %d)/GCD(%d, %d) = LCM\n", a, b, a, b);
+  }
+  return lcm;
+}
+
+
 void mutils::divisors(int n, std::vector<int>& divisors)
 {
   for (int i = 1; i <= n; ++i) {

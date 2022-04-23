@@ -26,6 +26,7 @@ int main()
     PARTITIONS,
     PARTITIONS_BELL,
     GCD,
+    LCM,
     DIVISORS,
     PRIME_FACTORS,
     FACTORIAL,
@@ -39,6 +40,7 @@ int main()
   opsName[Operations::PARTITIONS] = "Partitions";
   opsName[Operations::PARTITIONS_BELL] = "Partitions (Bell Numbers)";
   opsName[Operations::GCD] = "GCD/GCF (Euclidian)";
+  opsName[Operations::LCM] = "LCM";
   opsName[Operations::DIVISORS] = "Divisors";
   opsName[Operations::PRIME_FACTORS] = "Prime Factors";
   opsName[Operations::FACTORIAL] = "Factorial n!";
@@ -100,6 +102,7 @@ int main()
       std::vector<int> integers;
       int first, second, third;
       int gcd;
+      int lcm;
       int parts;
       BigInt partsBell;
       BigInt factorial;
@@ -152,6 +155,15 @@ int main()
           std::cout << std::endl;
           gcd = mutils::gcd(first, second, true);
           std::printf("\nGCD(%d, %d) = %d\n", first, second, gcd);
+          break;
+
+        case Operations::LCM:
+
+          first = mutils::prompt_int_input("Enter first integer: ");
+          second = mutils::prompt_int_input("Enter second integer: ");
+          std::cout << std::endl;
+          lcm = mutils::lcm(first, second, true);
+          std::printf("\nLCM(%d, %d) = %d\n", first, second, lcm);
           break;
 
         case Operations::DIVISORS:

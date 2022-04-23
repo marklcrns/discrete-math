@@ -19,6 +19,7 @@ namespace mutils {
   auto partitions_bell(int n) -> BigInt;
   void divisors(int n, std::vector<int>& divisors);
   auto gcd(int m, int n, bool verbose) -> int;
+  auto lcm(int m, int n, bool verbose) -> int;
   void prime_factors(int n, std::vector<int>& primeFactors);
   auto factorial(BigInt n) -> BigInt;
 
